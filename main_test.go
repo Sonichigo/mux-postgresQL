@@ -12,25 +12,21 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"strconv"
-	
+
 	"github.com/sonichigo/congenial-winner"
 )
 
 var a main.App
 
 func TestMain(m *testing.M) {
-	a = main.App{}
 	a.Initialize(
-		os.Getenv("TEST_DB_USERNAME"),
-		os.Getenv("TEST_DB_PASSWORD"),
-		os.Getenv("TEST_DB_NAME"))
+		os.Getenv("APP_DB_USERNAME"),
+		os.Getenv("APP_DB_PASSWORD"),
+		os.Getenv("APP_DB_NAME"))
 
 	ensureTableExists()
-
 	code := m.Run()
-
 	clearTable()
-
 	os.Exit(code)
 }
 
@@ -53,7 +49,6 @@ const tableCreationQuery = `CREATE TABLE IF NOT EXISTS products
     CONSTRAINT products_pkey PRIMARY KEY (id)
 )`
 
-// tom: next functions added later, these require more modules: net/http net/http/httptest
 func TestEmptyTable(t *testing.T) {
 	clearTable()
 
@@ -95,7 +90,6 @@ func TestGetNonExistentProduct(t *testing.T) {
 	}
 }
 
-// tom: rewritten function
 func TestCreateProduct(t *testing.T) {
 
 	clearTable()
@@ -135,6 +129,8 @@ func TestGetProduct(t *testing.T) {
 	checkResponseCode(t, http.StatusOK, response.Code)
 }
 
+// main_test.go
+
 func addProducts(count int) {
 	if count < 1 {
 		count = 1
@@ -159,7 +155,6 @@ func TestUpdateProduct(t *testing.T) {
 	req, _ = http.NewRequest("PUT", "/product/1", bytes.NewBuffer(jsonStr))
 	req.Header.Set("Content-Type", "application/json")
 
-	// req, _ = http.NewRequest("PUT", "/product/1", bytes.NewBuffer(payload))
 	response = executeRequest(req)
 
 	checkResponseCode(t, http.StatusOK, response.Code)
