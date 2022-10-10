@@ -1,5 +1,5 @@
 export APP_DB_USERNAME=postgres
-export APP_DB_PASSWORD=
+export APP_DB_PASSWORD=password
 export APP_DB_NAME=postgres
 
 export TEST_DB_USERNAME=$APP_DB_USERNAME
