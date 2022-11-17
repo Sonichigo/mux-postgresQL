@@ -22,7 +22,6 @@ func TestMain(m *testing.M) {
 	a.Initialize(
 		"postgres", "password",
 		"postgres")
-
 	ensureTableExists()
 	code := m.Run()
 	clearTable()
