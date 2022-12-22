@@ -1,0 +1,51 @@
+version: api.keploy.io/v1beta1
+kind: Generic
+name: 6d0b3757-cf5a-466f-9eef-e849bdb1c8b7-0
+spec:
+    metadata:
+        arguments: '[{ 1 chocolate} { 2 30}]'
+        name: SQL
+        operation: QueryContext
+        query: '"INSERT INTO products(name, price) VALUES($1, $2) RETURNING id"'
+        type: SQL_DB
+    objects:
+        - type: '*keploy.KError'
+          data: H4sIAAAAAAAA/+L638jKyPS/hYGBgfV/EwMjIyAAAP//ngbw8hEAAAA=
+---
+version: api.keploy.io/v1beta1
+kind: Generic
+name: 6d0b3757-cf5a-466f-9eef-e849bdb1c8b7-1
+spec:
+    metadata:
+        name: SQL
+        operation: QueryContext.Columns
+        type: SQL_DB
+    objects:
+        - type: '*[]string'
+          data: H4sIAAAAAAAA/+L538rEyPS/jYGRh4GBHUQzZaYAAgAA//8EknXsFQAAAA==
+---
+version: api.keploy.io/v1beta1
+kind: Generic
+name: 6d0b3757-cf5a-466f-9eef-e849bdb1c8b7-2
+spec:
+    metadata:
+        name: SQL
+        operation: QueryContext.Next
+        type: SQL_DB
+    objects:
+        - type: '*keploy.KError'
+          data: H4sIAAAAAAAA/+L638jKyPS/hYGBgfV/EwMjIyAAAP//ngbw8hEAAAA=
+        - type: '*ksql.Value'
+          data: H4sIAAAAAAAA/+L6387KyPS/i4GBged/NxMj0/8eBkYBEKeDgSNayTEr0lYpFhAAAP//nr4sESUAAAA=
+---
+version: api.keploy.io/v1beta1
+kind: Generic
+name: 6d0b3757-cf5a-466f-9eef-e849bdb1c8b7-3
+spec:
+    metadata:
+        name: SQL
+        operation: QueryContext.Close
+        type: SQL_DB
+    objects:
+        - type: '*keploy.KError'
+          data: H4sIAAAAAAAA/+L638jKyPS/hYGBgfV/EwMjIyAAAP//ngbw8hEAAAA=

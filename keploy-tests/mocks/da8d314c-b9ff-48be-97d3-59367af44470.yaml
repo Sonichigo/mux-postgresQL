@@ -1,0 +1,135 @@
+version: api.keploy.io/v1beta1
+kind: Generic
+name: da8d314c-b9ff-48be-97d3-59367af44470-0
+spec:
+    metadata:
+        arguments: '[{ 1 10} { 2 0}]'
+        name: SQL
+        operation: QueryContext
+        query: '"SELECT id, name,  price FROM products LIMIT $1 OFFSET $2"'
+        type: SQL_DB
+    objects:
+        - type: '*keploy.KError'
+          data: H4sIAAAAAAAA/+L638jKyPS/hYGBgfV/EwMjIyAAAP//ngbw8hEAAAA=
+---
+version: api.keploy.io/v1beta1
+kind: Generic
+name: da8d314c-b9ff-48be-97d3-59367af44470-1
+spec:
+    metadata:
+        name: SQL
+        operation: QueryContext.Columns
+        type: SQL_DB
+    objects:
+        - type: '*[]string'
+          data: H4sIAAAAAAAA/+L538rEyPS/jYGRh4FB6H8bAzNTZgpLXmJuKmtBUWZyKiAAAP//1mutDyAAAAA=
+---
+version: api.keploy.io/v1beta1
+kind: Generic
+name: da8d314c-b9ff-48be-97d3-59367af44470-2
+spec:
+    metadata:
+        name: SQL
+        operation: QueryContext.Next
+        type: SQL_DB
+    objects:
+        - type: '*keploy.KError'
+          data: H4sIAAAAAAAA/+L638jKyPS/hYGBgfV/EwMjIyAAAP//ngbw8hEAAAA=
+        - type: '*ksql.Value'
+          data: H4sIAAAAAAAA/+L6387KyPS/i4GBged/NxMj0/8eBkYBBgat/x0MatFKjlmutko6So6VXqFJxtmZSjpKTplefqnZboYhoUFOAcGetkqxgAAAAP//DovgMkMAAAA=
+---
+version: api.keploy.io/v1beta1
+kind: Generic
+name: da8d314c-b9ff-48be-97d3-59367af44470-3
+spec:
+    metadata:
+        name: SQL
+        operation: QueryContext.Next
+        type: SQL_DB
+    objects:
+        - type: '*keploy.KError'
+          data: H4sIAAAAAAAA/+L638jKyPS/hYGBgfV/EwMjIyAAAP//ngbw8hEAAAA=
+        - type: '*ksql.Value'
+          data: H4sIAAAAAAAA/+L6387KyPS/i4GBged/NxMj0/8eBkYBBgat/x0MatFKjlmetko6So6VXqFJxtmZSjpKTplefqnZboYhoUFOAcGetkqxgAAAAP//J0CKX0MAAAA=
+---
+version: api.keploy.io/v1beta1
+kind: Generic
+name: da8d314c-b9ff-48be-97d3-59367af44470-4
+spec:
+    metadata:
+        name: SQL
+        operation: QueryContext.Next
+        type: SQL_DB
+    objects:
+        - type: '*keploy.KError'
+          data: H4sIAAAAAAAA/+L638jKyPS/hYGBgfV/EwMjIyAAAP//ngbw8hEAAAA=
+        - type: '*ksql.Value'
+          data: H4sIAAAAAAAA/+L6387KyPS/i4GBged/NxMj0/8eBkYBBga9/x0MWtFKjlm+tko6So6VXs6R4RXFnum2IK5TppdfarabYUhokFNAsKetUiwgAAD//6evrJNHAAAA
+---
+version: api.keploy.io/v1beta1
+kind: Generic
+name: da8d314c-b9ff-48be-97d3-59367af44470-5
+spec:
+    metadata:
+        name: SQL
+        operation: QueryContext.Next
+        type: SQL_DB
+    objects:
+        - type: '*keploy.KError'
+          data: H4sIAAAAAAAA/+L638jKyPS/hYGBgfV/EwMjIyAAAP//ngbw8hEAAAA=
+        - type: '*ksql.Value'
+          data: H4sIAAAAAAAA/+L6387KyPS/i4GBged/NxMj0/8eBkYBBga9/x0MWtFKjlmBtko6So6VXs6R4RXFnum2IK5TppdfarabYUhokFNAsKetUiwgAAD//xdbz8pHAAAA
+---
+version: api.keploy.io/v1beta1
+kind: Generic
+name: da8d314c-b9ff-48be-97d3-59367af44470-6
+spec:
+    metadata:
+        name: SQL
+        operation: QueryContext.Next
+        type: SQL_DB
+    objects:
+        - type: '*keploy.KError'
+          data: H4sIAAAAAAAA/+L638jKyPS/hYGBgfV/EwMjIyAAAP//ngbw8hEAAAA=
+        - type: '*ksql.Value'
+          data: H4sIAAAAAAAA/+L6387KyPS/i4GBged/NxMj0/8eBkYBBga9/x0MWtFKjlmhtko6So6VXq5JRhXFnum2IK5TppdfarabYUhokFNAsKetUiwgAAD//2U+Yx9HAAAA
+---
+version: api.keploy.io/v1beta1
+kind: Generic
+name: da8d314c-b9ff-48be-97d3-59367af44470-7
+spec:
+    metadata:
+        name: SQL
+        operation: QueryContext.Next
+        type: SQL_DB
+    objects:
+        - type: '*keploy.KError'
+          data: H4sIAAAAAAAA/+L638jKyPS/hYGBgfV/EwMjIyAAAP//ngbw8hEAAAA=
+        - type: '*ksql.Value'
+          data: H4sIAAAAAAAA/+L6387KyPS/i4GBged/NxMj0/8eBkYBBgaj/x0MetFKjlmRtko6So6VXlmJ7pZZSUYVGSnuoZlKOkpOmV5+qdluhiGhQU4BwZ62SrGAAAAA//8IcvepSwAAAA==
+---
+version: api.keploy.io/v1beta1
+kind: Generic
+name: da8d314c-b9ff-48be-97d3-59367af44470-8
+spec:
+    metadata:
+        name: SQL
+        operation: QueryContext.Next
+        type: SQL_DB
+    objects:
+        - type: '*keploy.KError'
+          data: H4sIAAAAAAAA/+L638jKyPS/hYGBgeN/EwMLo6u/GyAAAP//44mLRBQAAAA=
+        - type: '*ksql.Value'
+          data: H4sIAAAAAAAA/+L6387KyPS/i4GBged/NxMj0/8eBkYBBgaj/x0MetFKjlmRtko6So6VXlmJ7pZZSUYVGSnuoZlKOkpOmV5+qdluhiGhQU4BwZ62SrGAAAAA//8IcvepSwAAAA==
+---
+version: api.keploy.io/v1beta1
+kind: Generic
+name: da8d314c-b9ff-48be-97d3-59367af44470-9
+spec:
+    metadata:
+        name: SQL
+        operation: QueryContext.Close
+        type: SQL_DB
+    objects:
+        - type: '*keploy.KError'
+          data: H4sIAAAAAAAA/+L638jKyPS/hYGBgfV/EwMjIyAAAP//ngbw8hEAAAA=

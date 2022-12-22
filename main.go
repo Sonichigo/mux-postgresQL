@@ -1,20 +1,23 @@
-// main.go
-
 package main
 
 import (
-	"net/http"
-	"os"
 	"github.com/keploy/go-sdk/integrations/kmux"
-
-	"github.com/gorilla/mux"
 	"github.com/keploy/go-sdk/keploy"
+	"log"
 )
 
 func main() {
-	a := App{}
-	r := mux.NewRouter()
-	port := "8080"
+	a := &App{}
+	err := a.Initialize(
+		"postgres",
+		"password",
+		"postgres")
+
+	if err != nil {
+		log.Fatal("Failed to initialize app", err)
+	}
+
+	port := "8010"
 	k := keploy.New(keploy.Config{
 		App: keploy.AppConfig{
 			Name: "my-app",
@@ -24,13 +27,9 @@ func main() {
 			URL: "http://localhost:6789/api",
 		},
 	})
-	
-	r.Use(kmux.MuxMiddleware(k))
-	http.ListenAndServe(":"+port, r)
-	a.Initialize(
-		os.Getenv("APP_DB_USERNAME"),
-		os.Getenv("APP_DB_PASSWORD"),
-		os.Getenv("APP_DB_NAME"))
+
+	a.Router.Use(kmux.MuxMiddleware(k))
+	log.Printf("😃 Connected to 8010 port !!")
 
 	a.Run(":8010")
 }

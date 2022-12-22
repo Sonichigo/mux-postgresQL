@@ -1,0 +1,130 @@
+name: 0c957185-f4a8-42e3-a911-65df0aa66486
+status: PASSED
+success: 2
+failure: 0
+total: 2
+tests:
+    - name: 0c957185-f4a8-42e3-a911-65df0aa66486
+      status: PASSED
+      started: 1671691614
+      completed: 1671691614
+      test_case_path: /Users/sarthak_1/Documents/Keploy/trash/congenial-winner/keploy-tests
+      mock_path: /Users/sarthak_1/Documents/Keploy/trash/congenial-winner/keploy-tests/mocks
+      test_case_id: 6d0b3757-cf5a-466f-9eef-e849bdb1c8b7
+      req:
+        method: POST
+        proto_major: 1
+        proto_minor: 1
+        url: /product
+        header:
+            Accept: '*/*'
+            Accept-Encoding: gzip, deflate, br
+            Cache-Control: no-cache
+            Connection: keep-alive
+            Content-Length: "44"
+            Content-Type: application/json
+            User-Agent: PostmanRuntime/7.29.2
+        body: |-
+            {
+                "name" :"chocolate",
+                "price": 30
+            }
+      mocks:
+        - 6d0b3757-cf5a-466f-9eef-e849bdb1c8b7-0
+        - 6d0b3757-cf5a-466f-9eef-e849bdb1c8b7-1
+        - 6d0b3757-cf5a-466f-9eef-e849bdb1c8b7-2
+        - 6d0b3757-cf5a-466f-9eef-e849bdb1c8b7-3
+      resp:
+        status_code: 201
+        header:
+            Content-Type: application/json
+        body: '{"id":6,"name":"chocolate","price":30}'
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+      result:
+        status_code:
+            normal: true
+            expected: 201
+            actual: 201
+        headers_result:
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+        body_result:
+            normal: true
+            type: JSON
+            expected: '{"id":6,"name":"chocolate","price":30}'
+            actual: '{"id":6,"name":"chocolate","price":30}'
+        dep_result: []
+    - name: 0c957185-f4a8-42e3-a911-65df0aa66486
+      status: PASSED
+      started: 1671691614
+      completed: 1671691614
+      test_case_path: /Users/sarthak_1/Documents/Keploy/trash/congenial-winner/keploy-tests
+      mock_path: /Users/sarthak_1/Documents/Keploy/trash/congenial-winner/keploy-tests/mocks
+      test_case_id: da8d314c-b9ff-48be-97d3-59367af44470
+      req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: /products
+        header:
+            Accept: '*/*'
+            Accept-Encoding: gzip, deflate, br
+            Cache-Control: no-cache
+            Connection: keep-alive
+            Content-Length: "44"
+            Content-Type: application/json
+            User-Agent: PostmanRuntime/7.29.2
+        body: |-
+            {
+                "name" :"chocolate",
+                "price": 30
+            }
+      mocks:
+        - da8d314c-b9ff-48be-97d3-59367af44470-0
+        - da8d314c-b9ff-48be-97d3-59367af44470-1
+        - da8d314c-b9ff-48be-97d3-59367af44470-2
+        - da8d314c-b9ff-48be-97d3-59367af44470-3
+        - da8d314c-b9ff-48be-97d3-59367af44470-4
+        - da8d314c-b9ff-48be-97d3-59367af44470-5
+        - da8d314c-b9ff-48be-97d3-59367af44470-6
+        - da8d314c-b9ff-48be-97d3-59367af44470-7
+        - da8d314c-b9ff-48be-97d3-59367af44470-8
+        - da8d314c-b9ff-48be-97d3-59367af44470-9
+      resp:
+        status_code: 200
+        header:
+            Content-Type: application/json
+        body: '[{"id":1,"name":"Toy","price":30},{"id":2,"name":"Toy","price":30},{"id":3,"name":"Ball","price":30},{"id":4,"name":"Ball","price":30},{"id":5,"name":"Doll","price":30},{"id":6,"name":"chocolate","price":30}]'
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+      result:
+        status_code:
+            normal: true
+            expected: 200
+            actual: 200
+        headers_result:
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+        body_result:
+            normal: true
+            type: JSON
+            expected: '[{"id":1,"name":"Toy","price":30},{"id":2,"name":"Toy","price":30},{"id":3,"name":"Ball","price":30},{"id":4,"name":"Ball","price":30},{"id":5,"name":"Doll","price":30},{"id":6,"name":"chocolate","price":30}]'
+            actual: '[{"id":1,"name":"Toy","price":30},{"id":2,"name":"Toy","price":30},{"id":3,"name":"Ball","price":30},{"id":4,"name":"Ball","price":30},{"id":5,"name":"Doll","price":30},{"id":6,"name":"chocolate","price":30}]'
+        dep_result: []
