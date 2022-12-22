@@ -10,12 +10,12 @@ import (
 
 	// tom: for route handlers
 	"encoding/json"
+	"github.com/keploy/go-sdk/integrations/ksql"
 	"net/http"
 	"strconv"
-
 	// tom: go get required
 	"github.com/gorilla/mux"
-	_ "github.com/lib/pq"
+	"github.com/lib/pq"
 )
 
 type App struct {
@@ -27,12 +27,18 @@ type App struct {
 // func (a *App) Initialize(user, password, dbname string) { }
 
 // tom: added "sslmode=disable" to connection string
-func (a *App) Initialize(user, password, dbname string) {
-	connectionString :=
-		fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable", user, password, dbname)
+func (a *App) Initialize(user, password, dbname string) error {
+
+	connectionString := fmt.Sprintf("host=%s port=%s user=%s "+
+		"password=%s dbname=%s sslmode=disable",
+		"localhost", "5438", user, password, dbname)
+	// connectionString := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable", user, password, dbname)
+	driver := ksql.Driver{Driver: pq.Driver{}}
+
+	sql.Register("keploy", &driver)
 
 	var err error
-	a.DB, err = sql.Open("postgres", connectionString)
+	a.DB, err = sql.Open("keploy", connectionString)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -41,6 +47,7 @@ func (a *App) Initialize(user, password, dbname string) {
 
 	// tom: this line is added after initializeRoutes is created later on
 	a.initializeRoutes()
+	return err
 }
 
 // tom: initial version
@@ -48,6 +55,7 @@ func (a *App) Initialize(user, password, dbname string) {
 // improved version
 func (a *App) Run(addr string) {
 	log.Fatal(http.ListenAndServe(":8010", a.Router))
+	log.Printf("😃 Connected to 8010 port !!")
 }
 
 // tom: these are added later
@@ -59,7 +67,7 @@ func (a *App) getProduct(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	p := product{ID: id}
-	if err := p.getProduct(a.DB); err != nil {
+	if err := p.getProduct(r.Context(), a.DB); err != nil {
 		switch err {
 		case sql.ErrNoRows:
 			respondWithError(w, http.StatusNotFound, "Product not found")
@@ -95,7 +103,7 @@ func (a *App) getProducts(w http.ResponseWriter, r *http.Request) {
 		start = 0
 	}
 
-	products, err := getProducts(a.DB, start, count)
+	products, err := getProducts(r.Context(), a.DB, start, count)
 	if err != nil {
 		respondWithError(w, http.StatusInternalServerError, err.Error())
 		return
@@ -113,7 +121,7 @@ func (a *App) createProduct(w http.ResponseWriter, r *http.Request) {
 	}
 	defer r.Body.Close()
 
-	if err := p.createProduct(a.DB); err != nil {
+	if err := p.createProduct(r.Context(), a.DB); err != nil {
 		respondWithError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -138,7 +146,7 @@ func (a *App) updateProduct(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 	p.ID = id
 
-	if err := p.updateProduct(a.DB); err != nil {
+	if err := p.updateProduct(r.Context(), a.DB); err != nil {
 		respondWithError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -155,7 +163,7 @@ func (a *App) deleteProduct(w http.ResponseWriter, r *http.Request) {
 	}
 
 	p := product{ID: id}
-	if err := p.deleteProduct(a.DB); err != nil {
+	if err := p.deleteProduct(r.Context(), a.DB); err != nil {
 		respondWithError(w, http.StatusInternalServerError, err.Error())
 		return
 	}

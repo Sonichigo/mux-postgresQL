@@ -1,0 +1,48 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: da8d314c-b9ff-48be-97d3-59367af44470
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: /products
+        header:
+            Accept: '*/*'
+            Accept-Encoding: gzip, deflate, br
+            Cache-Control: no-cache
+            Connection: keep-alive
+            Content-Length: "44"
+            Content-Type: application/json
+            User-Agent: PostmanRuntime/7.29.2
+        body: |-
+            {
+                "name" :"chocolate",
+                "price": 30
+            }
+    resp:
+        status_code: 200
+        header:
+            Content-Type: application/json
+        body: '[{"id":1,"name":"Toy","price":30},{"id":2,"name":"Toy","price":30},{"id":3,"name":"Ball","price":30},{"id":4,"name":"Ball","price":30},{"id":5,"name":"Doll","price":30},{"id":6,"name":"chocolate","price":30}]'
+        status_message: ""
+        proto_major: 1
+        proto_minor: 1
+    objects:
+        - type: error
+          data: ""
+    mocks:
+        - da8d314c-b9ff-48be-97d3-59367af44470-0
+        - da8d314c-b9ff-48be-97d3-59367af44470-1
+        - da8d314c-b9ff-48be-97d3-59367af44470-2
+        - da8d314c-b9ff-48be-97d3-59367af44470-3
+        - da8d314c-b9ff-48be-97d3-59367af44470-4
+        - da8d314c-b9ff-48be-97d3-59367af44470-5
+        - da8d314c-b9ff-48be-97d3-59367af44470-6
+        - da8d314c-b9ff-48be-97d3-59367af44470-7
+        - da8d314c-b9ff-48be-97d3-59367af44470-8
+        - da8d314c-b9ff-48be-97d3-59367af44470-9
+    assertions:
+        noise: []
+    created: 1671691552
