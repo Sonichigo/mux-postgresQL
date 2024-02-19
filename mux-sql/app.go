@@ -78,22 +78,24 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 }
 
 func (a *App) getProducts(w http.ResponseWriter, r *http.Request) {
-	count, _ := strconv.Atoi(r.FormValue("count"))
-	start, _ := strconv.Atoi(r.FormValue("start"))
-
-	if count > 10 || count < 1 {
+	count, err := strconv.Atoi(r.FormValue("count"))
+	if err != nil || count < 1 || count > 10 {
 		count = 10
 	}
-	if start < 0 {
+
+	start, err := strconv.Atoi(r.FormValue("start"))
+	if err != nil || start < 0 {
 		start = 0
 	}
 
 	products, err := getProducts(r.Context(), a.DB, start, count)
 	if err != nil {
-		respondWithError(w, http.StatusInternalServerError, err.Error())
+		log.Println("Error fetching products:", err)
+		respondWithError(w, http.StatusInternalServerError, "Error fetching products")
 		return
 	}
-
+	fmt.Println("products")
+	fmt.Println(products)
 	respondWithJSON(w, http.StatusOK, products)
 }
 
@@ -125,7 +127,7 @@ func (a *App) updateProduct(w http.ResponseWriter, r *http.Request) {
 	var p product
 	decoder := json.NewDecoder(r.Body)
 	if err := decoder.Decode(&p); err != nil {
-		respondWithError(w, http.StatusBadRequest, "Invalid resquest payload")
+		respondWithError(w, http.StatusBadRequest, "Invalid request payload")
 		return
 	}
 	defer handleDeferError(r.Body.Close())

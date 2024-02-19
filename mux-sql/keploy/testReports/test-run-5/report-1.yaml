@@ -1,0 +1,906 @@
+version: api.keploy.io/v1beta1
+name: report-1
+status: PASSED
+success: 12
+failure: 0
+total: 12
+tests:
+    - kind: Http
+      name: report-1
+      status: PASSED
+      started: 1708338011
+      completed: 1708338011
+      test_case_path: /home/sonichigi.linux/samples-go/mux-sql/keploy/test-set-1
+      mock_path: ""
+      test_case_id: test-1
+      req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8010/products
+        header:
+            Accept: '*/*'
+            Host: localhost:8010
+            User-Agent: curl/8.2.1
+        body: ""
+        body_type: ""
+        timestamp: 0001-01-01T00:00:00Z
+        host: ""
+      resp:
+        status_code: 200
+        header:
+            Content-Length: "2"
+            Content-Type: application/json
+            Date: Mon, 19 Feb 2024 09:28:05 GMT
+        body: '[]'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 0001-01-01T00:00:00Z
+      noise:
+        header.Date: []
+      result:
+        status_code:
+            normal: true
+            expected: 200
+            actual: 200
+        headers_result:
+            - normal: true
+              expected:
+                key: Content-Length
+                value:
+                    - "2"
+              actual:
+                key: Content-Length
+                value:
+                    - "2"
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+            - normal: true
+              expected:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 09:28:05 GMT
+              actual:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 10:20:11 GMT
+        body_result:
+            - normal: true
+              type: JSON
+              expected: '[]'
+              actual: '[]'
+        dep_result: []
+    - kind: Http
+      name: report-1
+      status: PASSED
+      started: 1708338011
+      completed: 1708338011
+      test_case_path: /home/sonichigi.linux/samples-go/mux-sql/keploy/test-set-1
+      mock_path: ""
+      test_case_id: test-2
+      req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8010/product/3
+        header:
+            Accept: '*/*'
+            Host: localhost:8010
+            User-Agent: curl/8.2.1
+        body: ""
+        body_type: ""
+        timestamp: 0001-01-01T00:00:00Z
+        host: ""
+      resp:
+        status_code: 404
+        header:
+            Content-Length: "29"
+            Content-Type: application/json
+            Date: Mon, 19 Feb 2024 09:28:10 GMT
+        body: '{"error":"Product not found"}'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 0001-01-01T00:00:00Z
+      noise:
+        header.Date: []
+      result:
+        status_code:
+            normal: true
+            expected: 404
+            actual: 404
+        headers_result:
+            - normal: true
+              expected:
+                key: Content-Length
+                value:
+                    - "29"
+              actual:
+                key: Content-Length
+                value:
+                    - "29"
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+            - normal: true
+              expected:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 09:28:10 GMT
+              actual:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 10:20:11 GMT
+        body_result:
+            - normal: true
+              type: JSON
+              expected: '{"error":"Product not found"}'
+              actual: '{"error":"Product not found"}'
+        dep_result: []
+    - kind: Http
+      name: report-1
+      status: PASSED
+      started: 1708338011
+      completed: 1708338011
+      test_case_path: /home/sonichigi.linux/samples-go/mux-sql/keploy/test-set-1
+      mock_path: ""
+      test_case_id: test-3
+      req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8010/product/2
+        header:
+            Accept: '*/*'
+            Host: localhost:8010
+            User-Agent: curl/8.2.1
+        body: ""
+        body_type: ""
+        timestamp: 0001-01-01T00:00:00Z
+        host: ""
+      resp:
+        status_code: 404
+        header:
+            Content-Length: "29"
+            Content-Type: application/json
+            Date: Mon, 19 Feb 2024 09:28:13 GMT
+        body: '{"error":"Product not found"}'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 0001-01-01T00:00:00Z
+      noise:
+        header.Date: []
+      result:
+        status_code:
+            normal: true
+            expected: 404
+            actual: 404
+        headers_result:
+            - normal: true
+              expected:
+                key: Content-Length
+                value:
+                    - "29"
+              actual:
+                key: Content-Length
+                value:
+                    - "29"
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+            - normal: true
+              expected:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 09:28:13 GMT
+              actual:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 10:20:11 GMT
+        body_result:
+            - normal: true
+              type: JSON
+              expected: '{"error":"Product not found"}'
+              actual: '{"error":"Product not found"}'
+        dep_result: []
+    - kind: Http
+      name: report-1
+      status: PASSED
+      started: 1708338011
+      completed: 1708338011
+      test_case_path: /home/sonichigi.linux/samples-go/mux-sql/keploy/test-set-1
+      mock_path: ""
+      test_case_id: test-4
+      req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8010/product/4
+        header:
+            Accept: '*/*'
+            Host: localhost:8010
+            User-Agent: curl/8.2.1
+        body: ""
+        body_type: ""
+        timestamp: 0001-01-01T00:00:00Z
+        host: ""
+      resp:
+        status_code: 404
+        header:
+            Content-Length: "29"
+            Content-Type: application/json
+            Date: Mon, 19 Feb 2024 09:28:14 GMT
+        body: '{"error":"Product not found"}'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 0001-01-01T00:00:00Z
+      noise:
+        header.Date: []
+      result:
+        status_code:
+            normal: true
+            expected: 404
+            actual: 404
+        headers_result:
+            - normal: true
+              expected:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 09:28:14 GMT
+              actual:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 10:20:11 GMT
+            - normal: true
+              expected:
+                key: Content-Length
+                value:
+                    - "29"
+              actual:
+                key: Content-Length
+                value:
+                    - "29"
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+        body_result:
+            - normal: true
+              type: JSON
+              expected: '{"error":"Product not found"}'
+              actual: '{"error":"Product not found"}'
+        dep_result: []
+    - kind: Http
+      name: report-1
+      status: PASSED
+      started: 1708338011
+      completed: 1708338011
+      test_case_path: /home/sonichigi.linux/samples-go/mux-sql/keploy/test-set-1
+      mock_path: ""
+      test_case_id: test-5
+      req:
+        method: POST
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8010/product
+        header:
+            Accept: '*/*'
+            Content-Length: "43"
+            Content-Type: application/json
+            Host: localhost:8010
+            User-Agent: curl/8.2.1
+        body: "{\n    \"name\":\"Bubbles\", \n    \"price\": 124\n}"
+        body_type: ""
+        timestamp: 0001-01-01T00:00:00Z
+        host: ""
+      resp:
+        status_code: 201
+        header:
+            Content-Length: "37"
+            Content-Type: application/json
+            Date: Mon, 19 Feb 2024 09:28:33 GMT
+        body: '{"id":2,"name":"Bubbles","price":124}'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 0001-01-01T00:00:00Z
+      noise:
+        header.Date: []
+      result:
+        status_code:
+            normal: true
+            expected: 201
+            actual: 201
+        headers_result:
+            - normal: true
+              expected:
+                key: Content-Length
+                value:
+                    - "37"
+              actual:
+                key: Content-Length
+                value:
+                    - "37"
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+            - normal: true
+              expected:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 09:28:33 GMT
+              actual:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 10:20:11 GMT
+        body_result:
+            - normal: true
+              type: JSON
+              expected: '{"id":2,"name":"Bubbles","price":124}'
+              actual: '{"id":2,"name":"Bubbles","price":124}'
+        dep_result: []
+    - kind: Http
+      name: report-1
+      status: PASSED
+      started: 1708338011
+      completed: 1708338011
+      test_case_path: /home/sonichigi.linux/samples-go/mux-sql/keploy/test-set-1
+      mock_path: ""
+      test_case_id: test-6
+      req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8010/product/2
+        header:
+            Accept: '*/*'
+            Host: localhost:8010
+            User-Agent: curl/8.2.1
+        body: ""
+        body_type: ""
+        timestamp: 0001-01-01T00:00:00Z
+        host: ""
+      resp:
+        status_code: 200
+        header:
+            Content-Length: "37"
+            Content-Type: application/json
+            Date: Mon, 19 Feb 2024 09:28:36 GMT
+        body: '{"id":2,"name":"Bubbles","price":124}'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 0001-01-01T00:00:00Z
+      noise:
+        header.Date: []
+      result:
+        status_code:
+            normal: true
+            expected: 200
+            actual: 200
+        headers_result:
+            - normal: true
+              expected:
+                key: Content-Length
+                value:
+                    - "37"
+              actual:
+                key: Content-Length
+                value:
+                    - "37"
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+            - normal: true
+              expected:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 09:28:36 GMT
+              actual:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 10:20:11 GMT
+        body_result:
+            - normal: true
+              type: JSON
+              expected: '{"id":2,"name":"Bubbles","price":124}'
+              actual: '{"id":2,"name":"Bubbles","price":124}'
+        dep_result: []
+    - kind: Http
+      name: report-1
+      status: PASSED
+      started: 1708338011
+      completed: 1708338011
+      test_case_path: /home/sonichigi.linux/samples-go/mux-sql/keploy/test-set-1
+      mock_path: ""
+      test_case_id: test-7
+      req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8010/product/1
+        header:
+            Accept: '*/*'
+            Host: localhost:8010
+            User-Agent: curl/8.2.1
+        body: ""
+        body_type: ""
+        timestamp: 0001-01-01T00:00:00Z
+        host: ""
+      resp:
+        status_code: 200
+        header:
+            Content-Length: "38"
+            Content-Type: application/json
+            Date: Mon, 19 Feb 2024 09:28:38 GMT
+        body: '{"id":1,"name":"Product 0","price":10}'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 0001-01-01T00:00:00Z
+      noise:
+        header.Date: []
+      result:
+        status_code:
+            normal: true
+            expected: 200
+            actual: 200
+        headers_result:
+            - normal: true
+              expected:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 09:28:38 GMT
+              actual:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 10:20:11 GMT
+            - normal: true
+              expected:
+                key: Content-Length
+                value:
+                    - "38"
+              actual:
+                key: Content-Length
+                value:
+                    - "38"
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+        body_result:
+            - normal: true
+              type: JSON
+              expected: '{"id":1,"name":"Product 0","price":10}'
+              actual: '{"id":1,"name":"Product 0","price":10}'
+        dep_result: []
+    - kind: Http
+      name: report-1
+      status: PASSED
+      started: 1708338011
+      completed: 1708338011
+      test_case_path: /home/sonichigi.linux/samples-go/mux-sql/keploy/test-set-1
+      mock_path: ""
+      test_case_id: test-8
+      req:
+        method: PUT
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8010/product/1
+        header:
+            Accept: '*/*'
+            Content-Length: "38"
+            Content-Type: application/json
+            Host: localhost:8010
+            User-Agent: curl/8.2.1
+        body: '{"name":"New Product1", "price":"100"}'
+        body_type: ""
+        timestamp: 0001-01-01T00:00:00Z
+        host: ""
+      resp:
+        status_code: 400
+        header:
+            Content-Length: "36"
+            Content-Type: application/json
+            Date: Mon, 19 Feb 2024 09:29:41 GMT
+        body: '{"error":"Invalid resquest payload"}'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 0001-01-01T00:00:00Z
+      noise:
+        header.Date: []
+      result:
+        status_code:
+            normal: true
+            expected: 400
+            actual: 400
+        headers_result:
+            - normal: true
+              expected:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 09:29:41 GMT
+              actual:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 10:20:11 GMT
+            - normal: true
+              expected:
+                key: Content-Length
+                value:
+                    - "36"
+              actual:
+                key: Content-Length
+                value:
+                    - "36"
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+        body_result:
+            - normal: true
+              type: JSON
+              expected: '{"error":"Invalid resquest payload"}'
+              actual: '{"error":"Invalid resquest payload"}'
+        dep_result: []
+    - kind: Http
+      name: report-1
+      status: PASSED
+      started: 1708338011
+      completed: 1708338011
+      test_case_path: /home/sonichigi.linux/samples-go/mux-sql/keploy/test-set-1
+      mock_path: ""
+      test_case_id: test-9
+      req:
+        method: PUT
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8010/product/1
+        header:
+            Accept: '*/*'
+            Content-Length: "38"
+            Content-Type: application/json
+            Host: localhost:8010
+            User-Agent: curl/8.2.1
+        body: '{"name":"New Product1", "price":"100"}'
+        body_type: ""
+        timestamp: 0001-01-01T00:00:00Z
+        host: ""
+      resp:
+        status_code: 400
+        header:
+            Content-Length: "36"
+            Content-Type: application/json
+            Date: Mon, 19 Feb 2024 09:29:58 GMT
+        body: '{"error":"Invalid resquest payload"}'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 0001-01-01T00:00:00Z
+      noise:
+        header.Date: []
+      result:
+        status_code:
+            normal: true
+            expected: 400
+            actual: 400
+        headers_result:
+            - normal: true
+              expected:
+                key: Content-Length
+                value:
+                    - "36"
+              actual:
+                key: Content-Length
+                value:
+                    - "36"
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+            - normal: true
+              expected:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 09:29:58 GMT
+              actual:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 10:20:11 GMT
+        body_result:
+            - normal: true
+              type: JSON
+              expected: '{"error":"Invalid resquest payload"}'
+              actual: '{"error":"Invalid resquest payload"}'
+        dep_result: []
+    - kind: Http
+      name: report-1
+      status: PASSED
+      started: 1708338011
+      completed: 1708338011
+      test_case_path: /home/sonichigi.linux/samples-go/mux-sql/keploy/test-set-1
+      mock_path: ""
+      test_case_id: test-10
+      req:
+        method: PUT
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8010/product/2
+        header:
+            Accept: '*/*'
+            Content-Length: "38"
+            Content-Type: application/json
+            Host: localhost:8010
+            User-Agent: curl/8.2.1
+        body: '{"name":"New Product1", "price":"100"}'
+        body_type: ""
+        timestamp: 0001-01-01T00:00:00Z
+        host: ""
+      resp:
+        status_code: 400
+        header:
+            Content-Length: "36"
+            Content-Type: application/json
+            Date: Mon, 19 Feb 2024 09:30:24 GMT
+        body: '{"error":"Invalid resquest payload"}'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 0001-01-01T00:00:00Z
+      noise:
+        header.Date: []
+      result:
+        status_code:
+            normal: true
+            expected: 400
+            actual: 400
+        headers_result:
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+            - normal: true
+              expected:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 09:30:24 GMT
+              actual:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 10:20:11 GMT
+            - normal: true
+              expected:
+                key: Content-Length
+                value:
+                    - "36"
+              actual:
+                key: Content-Length
+                value:
+                    - "36"
+        body_result:
+            - normal: true
+              type: JSON
+              expected: '{"error":"Invalid resquest payload"}'
+              actual: '{"error":"Invalid resquest payload"}'
+        dep_result: []
+    - kind: Http
+      name: report-1
+      status: PASSED
+      started: 1708338011
+      completed: 1708338011
+      test_case_path: /home/sonichigi.linux/samples-go/mux-sql/keploy/test-set-1
+      mock_path: ""
+      test_case_id: test-11
+      req:
+        method: PUT
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8010/product/2
+        header:
+            Accept: '*/*'
+            Content-Length: "15"
+            Content-Type: application/json
+            Host: localhost:8010
+            User-Agent: curl/8.2.1
+        body: ' "price":"100"}'
+        body_type: ""
+        timestamp: 0001-01-01T00:00:00Z
+        host: ""
+      resp:
+        status_code: 400
+        header:
+            Content-Length: "36"
+            Content-Type: application/json
+            Date: Mon, 19 Feb 2024 09:31:16 GMT
+        body: '{"error":"Invalid resquest payload"}'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 0001-01-01T00:00:00Z
+      noise:
+        header.Date: []
+      result:
+        status_code:
+            normal: true
+            expected: 400
+            actual: 400
+        headers_result:
+            - normal: true
+              expected:
+                key: Content-Length
+                value:
+                    - "36"
+              actual:
+                key: Content-Length
+                value:
+                    - "36"
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+            - normal: true
+              expected:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 09:31:16 GMT
+              actual:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 10:20:11 GMT
+        body_result:
+            - normal: true
+              type: JSON
+              expected: '{"error":"Invalid resquest payload"}'
+              actual: '{"error":"Invalid resquest payload"}'
+        dep_result: []
+    - kind: Http
+      name: report-1
+      status: PASSED
+      started: 1708338011
+      completed: 1708338011
+      test_case_path: /home/sonichigi.linux/samples-go/mux-sql/keploy/test-set-1
+      mock_path: ""
+      test_case_id: test-12
+      req:
+        method: DELETE
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8010/product/1
+        header:
+            Accept: '*/*'
+            Host: localhost:8010
+            User-Agent: curl/8.2.1
+        body: ""
+        body_type: ""
+        timestamp: 0001-01-01T00:00:00Z
+        host: ""
+      resp:
+        status_code: 200
+        header:
+            Content-Length: "20"
+            Content-Type: application/json
+            Date: Mon, 19 Feb 2024 09:31:36 GMT
+        body: '{"result":"success"}'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 0001-01-01T00:00:00Z
+      noise:
+        header.Date: []
+      result:
+        status_code:
+            normal: true
+            expected: 200
+            actual: 200
+        headers_result:
+            - normal: true
+              expected:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 09:31:36 GMT
+              actual:
+                key: Date
+                value:
+                    - Mon, 19 Feb 2024 10:20:11 GMT
+            - normal: true
+              expected:
+                key: Content-Length
+                value:
+                    - "20"
+              actual:
+                key: Content-Length
+                value:
+                    - "20"
+            - normal: true
+              expected:
+                key: Content-Type
+                value:
+                    - application/json
+              actual:
+                key: Content-Type
+                value:
+                    - application/json
+        body_result:
+            - normal: true
+              type: JSON
+              expected: '{"result":"success"}'
+              actual: '{"result":"success"}'
+        dep_result: []
+test_set: test-set-1

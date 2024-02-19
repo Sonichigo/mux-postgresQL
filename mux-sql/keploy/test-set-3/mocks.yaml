@@ -1,0 +1,272 @@
+version: api.keploy.io/v1beta1
+kind: Postgres
+name: mock-0
+spec:
+    metadata:
+        type: config
+    postgresrequests:
+        - identifier: StartupRequest
+          length: 102
+          payload: AAAAZgADAABkYXRlc3R5bGUASVNPLCBNRFkAZGF0YWJhc2UAcG9zdGdyZXMAZXh0cmFfZmxvYXRfZGlnaXRzADIAdXNlcgBwb3N0Z3JlcwBjbGllbnRfZW5jb2RpbmcAVVRGOAAA
+          startup_message:
+            protocolversion: 196608
+            parameters:
+                client_encoding: UTF8
+                database: postgres
+                datestyle: ISO, MDY
+                extra_float_digits: "2"
+                user: postgres
+          auth_type: 0
+    postgresresponses:
+        - header: [R]
+          identifier: ServerResponse
+          length: 102
+          authentication_md5_password:
+            salt:
+                - 54
+                - 131
+                - 242
+                - 152
+          msg_type: 82
+          auth_type: 5
+    reqtimestampmock: 2024-02-19T10:47:40.926081319Z
+    restimestampmock: 2024-02-19T10:47:40.93024101Z
+---
+version: api.keploy.io/v1beta1
+kind: Postgres
+name: mock-1
+spec:
+    metadata:
+        type: config
+    postgresrequests:
+        - header: [p]
+          identifier: ClientRequest
+          length: 102
+          password_message:
+            password: md53946ff3e886a7c1dd078b74fc04c972f
+          msg_type: 112
+          auth_type: 0
+    postgresresponses:
+        - header: [R, S, S, S, S, S, S, S, S, S, S, S, K, Z]
+          identifier: ServerResponse
+          length: 102
+          authentication_md5_password:
+            salt:
+                - 0
+                - 0
+                - 0
+                - 0
+          backend_key_data:
+            process_id: 43
+            secret_key: 2841821955
+          parameter_status:
+            - name: application_name
+              value: ""
+            - name: client_encoding
+              value: UTF8
+            - name: DateStyle
+              value: ISO, MDY
+            - name: integer_datetimes
+              value: "on"
+            - name: IntervalStyle
+              value: postgres
+            - name: is_superuser
+              value: "on"
+            - name: server_encoding
+              value: UTF8
+            - name: server_version
+              value: 10.5 (Debian 10.5-2.pgdg90+1)
+            - name: session_authorization
+              value: postgres
+            - name: standard_conforming_strings
+              value: "on"
+            - name: TimeZone
+              value: UTC
+            - name: TimeZone
+              value: UTC
+            - name: TimeZone
+              value: UTC
+          ready_for_query:
+            txstatus: 73
+          msg_type: 90
+          auth_type: 0
+    reqtimestampmock: 2024-02-19T10:47:40.945311611Z
+    restimestampmock: 2024-02-19T10:47:40.945399231Z
+---
+version: api.keploy.io/v1beta1
+kind: Postgres
+name: mock-2
+spec:
+    metadata:
+        type: config
+    postgresrequests:
+        - header: [P, D]
+          identifier: ClientRequest
+          length: 102
+          payload: UAAAAEUASU5TRVJUIElOVE8gcHJvZHVjdHMobmFtZSwgcHJpY2UpIFZBTFVFUygkMSwgJDIpIFJFVFVSTklORyBpZAAAAEQAAAAGUwBTAAAABA==
+          describe:
+            object_type: 83
+            name: ""
+          parse:
+            - name: ""
+              query: INSERT INTO products(name, price) VALUES($1, $2) RETURNING id
+              parameter_oids: []
+          msg_type: 68
+          auth_type: 0
+    postgresresponses:
+        - header: ["1", t, T, Z]
+          identifier: ServerResponse
+          length: 102
+          authentication_md5_password:
+            salt:
+                - 0
+                - 0
+                - 0
+                - 0
+          parameter_description:
+            parameteroids:
+                - 25
+                - 1700
+          ready_for_query:
+            txstatus: 73
+          row_description: {fields: [{name: [105, 100], table_oid: 16386, table_attribute_number: 1, data_type_oid: 23, data_type_size: 4, type_modifier: -1, format: 0}]}
+          msg_type: 90
+          auth_type: 0
+    reqtimestampmock: 2024-02-19T10:47:40.947356709Z
+    restimestampmock: 2024-02-19T10:47:40.947411748Z
+---
+version: api.keploy.io/v1beta1
+kind: Postgres
+name: mock-3
+spec:
+    metadata:
+        type: config
+    postgresrequests:
+        - header: [B, E]
+          identifier: ClientRequest
+          length: 102
+          payload: QgAAACAAAAAAAAIAAAAHQnViYmxlcwAAAAMxMjQAAQABRQAAAAkAAAAAAFMAAAAE
+          bind:
+            - parameters: [[66, 117, 98, 98, 108, 101, 115], [49, 50, 52]]
+              result_format_codes: [1]
+          execute:
+            - {}
+          msg_type: 69
+          auth_type: 0
+    postgresresponses:
+        - header: ["2", D, C, Z]
+          identifier: ServerResponse
+          length: 102
+          payload: MgAAAAREAAAADgABAAAABAAAAAFDAAAAD0lOU0VSVCAwIDEAWgAAAAVJ
+          authentication_md5_password:
+            salt:
+                - 0
+                - 0
+                - 0
+                - 0
+          command_complete:
+            - command_tag:
+                - 73
+                - 78
+                - 83
+                - 69
+                - 82
+                - 84
+                - 32
+                - 48
+                - 32
+                - 49
+          data_row: [{row_values: ['base64:AAAAAQ==']}, {row_values: ['base64:AAAAAQ==']}, {row_values: ['base64:AAAAAQ==']}]
+          ready_for_query:
+            txstatus: 73
+          msg_type: 90
+          auth_type: 0
+    reqtimestampmock: 2024-02-19T10:47:40.951567648Z
+    restimestampmock: 2024-02-19T10:47:40.951608979Z
+---
+version: api.keploy.io/v1beta1
+kind: Postgres
+name: mock-4
+spec:
+    metadata:
+        type: config
+    postgresrequests:
+        - header: [P, D]
+          identifier: ClientRequest
+          length: 102
+          payload: UAAAAEAAU0VMRUNUIGlkLCBuYW1lLCAgcHJpY2UgRlJPTSBwcm9kdWN0cyBMSU1JVCAkMSBPRkZTRVQgJDIAAABEAAAABlMAUwAAAAQ=
+          describe:
+            object_type: 83
+            name: ""
+          parse:
+            - name: ""
+              query: SELECT id, name, price FROM products LIMIT $1 OFFSET $2
+              parameter_oids: []
+          msg_type: 68
+          auth_type: 0
+    postgresresponses:
+        - header: ["1", t, T, Z]
+          identifier: ServerResponse
+          length: 102
+          authentication_md5_password:
+            salt:
+                - 0
+                - 0
+                - 0
+                - 0
+          parameter_description:
+            parameteroids:
+                - 20
+                - 20
+          ready_for_query:
+            txstatus: 73
+          row_description: {fields: [{name: [105, 100], table_oid: 16386, table_attribute_number: 1, data_type_oid: 23, data_type_size: 4, type_modifier: -1, format: 0}, {name: [110, 97, 109, 101], table_oid: 16386, table_attribute_number: 2, data_type_oid: 25, data_type_size: -1, type_modifier: -1, format: 0}, {name: [112, 114, 105, 99, 101], table_oid: 16386, table_attribute_number: 3, data_type_oid: 1700, data_type_size: -1, type_modifier: 655366, format: 0}]}
+          msg_type: 90
+          auth_type: 0
+    reqtimestampmock: 2024-02-19T10:48:34.516946689Z
+    restimestampmock: 2024-02-19T10:48:34.516995353Z
+---
+version: api.keploy.io/v1beta1
+kind: Postgres
+name: mock-5
+spec:
+    metadata:
+        type: config
+    postgresrequests:
+        - header: [B, E]
+          identifier: ClientRequest
+          length: 102
+          payload: QgAAAB0AAAAAAAIAAAACMTAAAAABMQADAAEAAAAARQAAAAkAAAAAAFMAAAAE
+          bind:
+            - parameters: [[49, 48], [49]]
+              result_format_codes: [1, 0, 0]
+          execute:
+            - {}
+          msg_type: 69
+          auth_type: 0
+    postgresresponses:
+        - header: ["2", C, Z]
+          identifier: ServerResponse
+          length: 102
+          authentication_md5_password:
+            salt:
+                - 0
+                - 0
+                - 0
+                - 0
+          command_complete:
+            - command_tag:
+                - 83
+                - 69
+                - 76
+                - 69
+                - 67
+                - 84
+                - 32
+                - 48
+          ready_for_query:
+            txstatus: 73
+          msg_type: 90
+          auth_type: 0
+    reqtimestampmock: 2024-02-19T10:48:34.518257201Z
+    restimestampmock: 2024-02-19T10:48:34.518313948Z

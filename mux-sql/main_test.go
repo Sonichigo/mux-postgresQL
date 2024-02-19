@@ -1,6 +1,7 @@
 package main_test
 
 import (
+	"os"
 	"bytes"
 	"encoding/json"
 	"log"
@@ -9,38 +10,29 @@ import (
 	"strconv"
 	"testing"
 	"test-app-product-catelog"
-	"github.com/keploy/go-sdk/v2/keploy"
 )
 
-var b main.App
+var a main.App
 
-func SetMain(t *testing.T) {
-	err := keploy.New(keploy.Config{
-		Name:           "name",
-		Mode:           keploy.MODE_RECORD, // change to MODE_TEST when you run in test mode
-		Path:           "/home/sonichigi.linux/samples-go/mux-sql",
-		MuteKeployLogs: true,
-		Delay:          20,
-	})
-	if err != nil {
-		t.Fatalf("Error with keploy")
-	}
-	b.Initialize(
-		"localhost", "postgres", "password",
+func TestMain(m *testing.M) {
+	a.Initialize(
+		"localhost","postgres", "password",
 		"postgres")
 	ensureTableExists()
+	code := m.Run()
 	clearTable()
+	os.Exit(code)
 }
 
 func ensureTableExists() {
-	if _, err := b.DB.Exec(tableCreationQuery); err != nil {
+	if _, err := a.DB.Exec(tableCreationQuery); err != nil {
 		log.Fatal(err)
 	}
 }
 
 func clearTable() {
-	b.DB.Exec("DELETE FROM products")
-	b.DB.Exec("ALTER SEQUENCE products_id_seq RESTART WITH 1")
+	a.DB.Exec("DELETE FROM products")
+	a.DB.Exec("ALTER SEQUENCE products_id_seq RESTART WITH 1")
 }
 
 const tableCreationQuery = `CREATE TABLE IF NOT EXISTS products
@@ -52,8 +44,8 @@ const tableCreationQuery = `CREATE TABLE IF NOT EXISTS products
 )`
 
 func TestEmptyTable(t *testing.T) {
-	SetMain(t)
 	clearTable()
+
 	req, _ := http.NewRequest("GET", "/products", nil)
 	response := executeRequest(req)
 
@@ -62,12 +54,11 @@ func TestEmptyTable(t *testing.T) {
 	if body := response.Body.String(); body != "[]" {
 		t.Errorf("Expected an empty array. Got %s", body)
 	}
-	keploy.KillProcessOnPort()
 }
 
 func executeRequest(req *http.Request) *httptest.ResponseRecorder {
 	rr := httptest.NewRecorder()
-	b.Router.ServeHTTP(rr, req)
+	a.Router.ServeHTTP(rr, req)
 
 	return rr
 }
@@ -79,8 +70,8 @@ func checkResponseCode(t *testing.T, expected, actual int) {
 }
 
 func TestGetNonExistentProduct(t *testing.T) {
-	SetMain(t)
 	clearTable()
+
 	req, _ := http.NewRequest("GET", "/product/11", nil)
 	response := executeRequest(req)
 
@@ -91,12 +82,12 @@ func TestGetNonExistentProduct(t *testing.T) {
 	if m["error"] != "Product not found" {
 		t.Errorf("Expected the 'error' key of the response to be set to 'Product not found'. Got '%s'", m["error"])
 	}
-	keploy.KillProcessOnPort()
 }
 
 func TestCreateProduct(t *testing.T) {
-	SetMain(t)
+
 	clearTable()
+
 	var jsonStr = []byte(`{"name":"test product", "price": 11.22}`)
 	req, _ := http.NewRequest("POST", "/product", bytes.NewBuffer(jsonStr))
 	req.Header.Set("Content-Type", "application/json")
@@ -120,21 +111,19 @@ func TestCreateProduct(t *testing.T) {
 	if m["id"] != 1.0 {
 		t.Errorf("Expected product ID to be '1'. Got '%v'", m["id"])
 	}
-	keploy.KillProcessOnPort()
 }
 
 func TestGetProduct(t *testing.T) {
-	SetMain(t)
 	clearTable()
 	addProducts(1)
+
 	req, _ := http.NewRequest("GET", "/product/1", nil)
 	response := executeRequest(req)
 
 	checkResponseCode(t, http.StatusOK, response.Code)
-	keploy.KillProcessOnPort()
 }
 
-// // main_test.go
+// main_test.go
 
 func addProducts(count int) {
 	if count < 1 {
@@ -142,59 +131,58 @@ func addProducts(count int) {
 	}
 
 	for i := 0; i < count; i++ {
-		b.DB.Exec("INSERT INTO products(name, price) VALUES($1, $2)", "Product "+strconv.Itoa(i), (i+1.0)*10)
+		a.DB.Exec("INSERT INTO products(name, price) VALUES($1, $2)", "Product "+strconv.Itoa(i), (i+1.0)*10)
 	}
 }
 
-// func TestUpdateProduct(t *testing.T) {
-// 	SetMain(t)
-// 	clearTable()
-// 	addProducts(1)
-// 	req, _ := http.NewRequest("GET", "/product/1", nil)
-// 	response := executeRequest(req)
-// 	var originalProduct map[string]interface{}
-// 	json.Unmarshal(response.Body.Bytes(), &originalProduct)
+func TestUpdateProduct(t *testing.T) {
 
-// 	var jsonStr = []byte(`{"name":"test product - updated name", "price": 11.22}`)
-// 	req, _ = http.NewRequest("PUT", "/product/1", bytes.NewBuffer(jsonStr))
-// 	req.Header.Set("Content-Type", "application/json")
+	clearTable()
+	addProducts(1)
 
-// 	response = executeRequest(req)
+	req, _ := http.NewRequest("GET", "/product/1", nil)
+	response := executeRequest(req)
+	var originalProduct map[string]interface{}
+	json.Unmarshal(response.Body.Bytes(), &originalProduct)
 
-// 	checkResponseCode(t, http.StatusOK, response.Code)
+	var jsonStr = []byte(`{"name":"test product - updated name", "price": 11.22}`)
+	req, _ = http.NewRequest("PUT", "/product/1", bytes.NewBuffer(jsonStr))
+	req.Header.Set("Content-Type", "application/json")
 
-// 	var m map[string]interface{}
-// 	json.Unmarshal(response.Body.Bytes(), &m)
+	response = executeRequest(req)
 
-// 	if m["id"] != originalProduct["id"] {
-// 		t.Errorf("Expected the id to remain the same (%v). Got %v", originalProduct["id"], m["id"])
-// 	}
+	checkResponseCode(t, http.StatusOK, response.Code)
 
-// 	if m["name"] == originalProduct["name"] {
-// 		t.Errorf("Expected the name to change from '%v' to '%v'. Got '%v'", originalProduct["name"], m["name"], m["name"])
-// 	}
+	var m map[string]interface{}
+	json.Unmarshal(response.Body.Bytes(), &m)
 
-// 	if m["price"] == originalProduct["price"] {
-// 		t.Errorf("Expected the price to change from '%v' to '%v'. Got '%v'", originalProduct["price"], m["price"], m["price"])
-// 	}
-// 	keploy.KillProcessOnPort()
-// }
+	if m["id"] != originalProduct["id"] {
+		t.Errorf("Expected the id to remain the same (%v). Got %v", originalProduct["id"], m["id"])
+	}
 
-// func TestDeleteProduct(t *testing.T) {
-// 	SetMain(t)
-// 	clearTable()
-// 	addProducts(1)
-// 	req, _ := http.NewRequest("GET", "/product/1", nil)
-// 	response := executeRequest(req)
-// 	checkResponseCode(t, http.StatusOK, response.Code)
+	if m["name"] == originalProduct["name"] {
+		t.Errorf("Expected the name to change from '%v' to '%v'. Got '%v'", originalProduct["name"], m["name"], m["name"])
+	}
 
-// 	req, _ = http.NewRequest("DELETE", "/product/1", nil)
-// 	response = executeRequest(req)
+	if m["price"] == originalProduct["price"] {
+		t.Errorf("Expected the price to change from '%v' to '%v'. Got '%v'", originalProduct["price"], m["price"], m["price"])
+	}
+}
 
-// 	checkResponseCode(t, http.StatusOK, response.Code)
+func TestDeleteProduct(t *testing.T) {
+	clearTable()
+	addProducts(1)
 
-// 	req, _ = http.NewRequest("GET", "/product/1", nil)
-// 	response = executeRequest(req)
-// 	checkResponseCode(t, http.StatusNotFound, response.Code)
-// 	keploy.KillProcessOnPort()
-// }
+	req, _ := http.NewRequest("GET", "/product/1", nil)
+	response := executeRequest(req)
+	checkResponseCode(t, http.StatusOK, response.Code)
+
+	req, _ = http.NewRequest("DELETE", "/product/1", nil)
+	response = executeRequest(req)
+
+	checkResponseCode(t, http.StatusOK, response.Code)
+
+	req, _ = http.NewRequest("GET", "/product/1", nil)
+	response = executeRequest(req)
+	checkResponseCode(t, http.StatusNotFound, response.Code)
+}

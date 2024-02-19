@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 )
+import "github.com/keploy/go-sdk/v2/keploy"
 
 func handleDeferError(err error) {
 	if err != nil {
@@ -25,5 +26,6 @@ func main() {
 
 	log.Printf("😃 Connected to 8010 port !!")
 
+	keploy.GracefulShutdown()
 	a.Run(":8010")
 }

@@ -142,7 +142,7 @@ curl --request POST \
   --url http://localhost:8010/product \
   --header 'content-type: application/json' \
   --data '{
-    "name":"Bubbles", 
+    "name":"coke", 
     "price": 124
 }'
 ```
