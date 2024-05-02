@@ -3,17 +3,12 @@ package main
 
 import (
 	"database/sql"
-
-	// tom: for Initialize
 	"fmt"
 	"log"
-
-	// tom: for route handlers
 	"encoding/json"
 	"github.com/keploy/go-sdk/integrations/ksql"
 	"net/http"
 	"strconv"
-	// tom: go get required
 	"github.com/gorilla/mux"
 	"github.com/lib/pq"
 )
