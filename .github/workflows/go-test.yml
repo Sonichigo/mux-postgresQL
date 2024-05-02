@@ -9,7 +9,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-   steps:
+    steps:
      - uses: actions/checkout@v4
      - name: 'Report Coverage'
        uses: sonichigo/go-covreport@main
