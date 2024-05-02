@@ -12,8 +12,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"strconv"
-
-	"github.com/sonichigo/congenial-winner"
+	"github.com/sonichigo/mux-postgresQL"
 )
 
 var a main.App
@@ -128,7 +127,6 @@ func TestGetProduct(t *testing.T) {
 }
 
 // main_test.go
-
 func addProducts(count int) {
 	if count < 1 {
 		count = 1
@@ -140,10 +138,8 @@ func addProducts(count int) {
 }
 
 func TestUpdateProduct(t *testing.T) {
-
 	clearTable()
 	addProducts(1)
-
 	req, _ := http.NewRequest("GET", "/product/1", nil)
 	response := executeRequest(req)
 	var originalProduct map[string]interface{}
