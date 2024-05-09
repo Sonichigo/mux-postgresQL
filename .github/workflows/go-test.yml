@@ -11,4 +11,7 @@ jobs:
     steps:
      - uses: actions/checkout@v4
      - name: 'Report Coverage'
-       uses: sonichigo/go-covreport@main
+       uses: sonichigo/get-cov@main
+       with: 
+         coverage-file: test-file
+         coverage-threshold: 65
