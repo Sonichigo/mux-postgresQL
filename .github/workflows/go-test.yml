@@ -7,7 +7,10 @@ on:
     branches:
       - main
 
-permissions: write-all
+permissions:
+  contents: write  # Required for actions/upload-pages-artifact
+  pages: write     # Required for actions/deploy-pages
+  id-token: write  # Required for actions/deploy-pages
   
 jobs:
   test:
