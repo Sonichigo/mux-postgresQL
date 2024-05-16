@@ -28,4 +28,4 @@ jobs:
        with: 
          coverage-file: test-file
          coverage-threshold: 65
-         token: ${{ github.token }}
+         token: ${{ secrets.GITHUB_TOKEN }}
