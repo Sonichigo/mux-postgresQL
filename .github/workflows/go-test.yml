@@ -11,7 +11,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write  # Required for actions/upload-pages-artifact
+      pages: write     # Required for actions/deploy-pages
+      id-token: write  # Required for actions/deploy-pages
       pull-requests: write
     steps:
      - uses: actions/checkout@v4
