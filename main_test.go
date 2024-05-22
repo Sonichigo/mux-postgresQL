@@ -13,7 +13,7 @@ import (
 	"net/http/httptest"
 	"strconv"
 
-	"github.com/sonichigo/congenial-winner"
+	"github.com/sonichigo/mux-postgresQL"
 )
 
 var a main.App
