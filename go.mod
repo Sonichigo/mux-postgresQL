@@ -1,4 +1,4 @@
-module github.com/sonichigo/congenial-winner
+module github.com/sonichigo/mux-postgresQL
 
 go 1.17
 
