@@ -17,6 +17,10 @@ jobs:
       pull-requests: write
     steps:
      - uses: actions/checkout@v4
+     - uses: actions/checkout@v4
+     - name: Start Database
+       run: |
+         docker-compose up -d
      - name: 'Report Coverage'
        uses: sonichigo/get-cov@main
        with: 
